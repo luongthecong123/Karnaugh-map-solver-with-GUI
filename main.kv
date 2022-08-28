@@ -1,0 +1,892 @@
+ScreenManager:
+    #transition: NoTransition
+    MenuScreen:
+        name : 'menu'
+    BiaKScreen1:
+        name:'biaK1'
+    BiaKScreen2bien:
+        name:'biaK2bien'
+    BiaKScreen3bien:
+        name:'biaK3bien'
+    BiaKScreen4bien:
+        name:'biaK4bien'
+
+    ChuyenCoSoScreen:
+        name:'chuyen'
+    DichAsciiScreen:
+        name: 'ascii'
+
+    SOPScreen:
+        name: 'SOP'
+    ChuyenMaScreen:
+        name: 'ma'
+    AboutScreen:
+        name:'about'
+<AboutScreen>:
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(20)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.15
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'menu'
+        MDBoxLayout:
+            size_hint_y:0.85
+            orientation:'vertical'
+            MDLabel:
+                text: "Name: Ky Thuat So Helper"
+            MDLabel:
+                text: "Version: 1.2 - August 2022"
+            MDLabel:
+                text: "Instructor: Nguyen Ly Thien Truong"
+            MDLabel:
+                text: "Student: Luong The Cong "
+            MDLabel:
+                text: "Bach Khoa University - DHQG HCM"
+            MDLabel:
+                text: "Class: PFIEV K18 Telecom"
+            MDLabel:
+                text: "Help me improve this app at: "
+            MDLabel:
+                text: "Email: luongthecong123@gmail.com"
+            MDLabel:
+                text: "Github repository: https://github.com/luongthecong123/KTSHelper"
+
+
+<SOPScreen>:
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(20)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.15
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'menu'
+        MDBoxLayout:
+            size_hint_y:0.7
+            Image:
+                source: "images/exchange.png"
+                allow_stretch: True
+
+        CoSoCard:
+            padding: dp(10)
+            MDBoxLayout:
+                spacing:dp(10)
+                orientation:'vertical'
+                MDLabel:
+                    text: "Chuyển SOP thành POS"
+                    halign:"center"
+                #MDBoxLayout:
+                MDTextField:
+                    id: from_text_SOP
+                    hint_text: "Nhập tổng của tích"
+                    helper_text_mode: "on_focus"
+                    helper_text: "Ví dụ: xyz+xy'z'+xy'z+xyz'+x'y'z"
+                MDLabel:
+                    text: app.SOPtoPOS_result
+                    halign:"center"
+                MDFillRoundFlatIconButton:
+                    md_bg_color: 97/255, 17/255, 150/255, 1
+                    icon: "play"
+                    text: "Chuyển"
+                    font_style:"H6"
+                    pos_hint: {'center_x': 0.5}
+                    on_press: app.SOPtoPOS()
+
+
+        CoSoCard:
+            padding: dp(10)
+            MDBoxLayout:
+                spacing:dp(10)
+                orientation:'vertical'
+                MDLabel:
+                    text: "Chuyển POS thành SOP"
+                    halign:"center"
+                #MDBoxLayout:
+                MDTextField:
+                    id: from_text_POS
+                    hint_text: "Nhập tích của tổng"
+                    helper_text_mode: "on_focus"
+                    helper_text: "Ví dụ: (x+y+z).(x+y'+z).(x+y'+z')"
+                MDLabel:
+                    text: app.POStoSOP_result
+                    halign:"center"
+                MDFillRoundFlatIconButton:
+                    md_bg_color: 97/255, 17/255, 150/255, 1
+                    icon: "play"
+                    text: "Chuyển"
+                    font_style:"H6"
+                    pos_hint: {'center_x': 0.5}
+                    on_press: app.POStoSOP()
+
+    ############################################3
+<BiaKScreen2bien>:
+    MDBoxLayout:
+        padding: dp(35)
+        spacing:dp(10)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.1
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'biaK1'
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y:.4
+            Image:
+                source: "images/2bien.png"
+                allow_stretch: True
+            MDLabel:
+                text: "Nhấn vào ô để thay đổi giá trị của ô đó"
+                halign: 'center'
+
+        MDBoxLayout:
+            pos_hint : {'x':.15}
+            CoSoCard:
+                padding:dp(20)
+                size_hint_x: None
+                width: 200
+
+                MDBoxLayout:
+
+                    MDGridLayout:
+
+                        padding: "4dp"
+                        spacing: "1dp"
+                        cols: 3
+                        rows: 3
+                        size_hint_y: None
+                        size_hint_x: None
+                        width: 150
+                        height: 150
+
+                        K_label:
+                            text: "B\A"
+                        K_label:
+                            text: "0"
+                        K_label:
+                            text: "1"
+                        # row 0 ##########################
+                        K_label:
+                            text: "0"
+                        Button:
+                            id: k_2_0
+                            text : app.k_2_0
+                            on_press: app.switch_2_0()
+                        Button:
+                            id: k_2_2
+                            text : app.k_2_2
+                            on_press: app.switch_2_2()
+                        # row 1 ##########################
+                        K_label:
+                            text: "1"
+                        Button:
+                            id: k_2_1
+                            text : app.k_2_1
+                            on_press: app.switch_2_1()
+                        Button:
+                            id: k_2_3
+                            text : app.k_2_3
+                            on_press: app.switch_2_3()
+
+
+        MDBoxLayout:
+            size_hint_y:0.7
+            CoSoCard:
+
+                MDBoxLayout:
+                    orientation:'vertical'
+                    MDLabel:
+                        text: "Kết quả:"
+                        halign:"center"
+                        font_style:"H6"
+                    MDLabel:
+                        #id: to_text_SOP_4
+                        text: app.to_text_SOP_2
+                        halign:"center"
+
+        MDBoxLayout:
+            size_hint_y:0.7
+            orientation: "vertical"
+            spacing: dp(10)
+            MDFillRoundFlatIconButton:
+                md_bg_color: 97/255, 17/255, 150/255, 1
+                icon: "play"
+                text: "Rút Gọn"
+                font_style:"H6"
+                pos_hint: {'center_x': 0.5}
+                #halign:"center"
+                on_press: app.rut_gon_K_2()
+            MDFillRoundFlatIconButton:
+                md_bg_color: 97/255, 17/255, 150/255, 1
+                icon: "replay"
+                text: "Reset"
+                font_style:"H6"
+                pos_hint: {'center_x': 0.5}
+                #halign:"center"
+                on_press: app.reset_2()
+<BiaKScreen3bien>:
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(10)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.1
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'biaK1'
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y:.1
+            Image:
+                source: "images/3bien.png"
+                allow_stretch: True
+            MDLabel:
+                text: "Nhấn vào ô để thay đổi giá trị của ô đó"
+                halign: 'center'
+
+        MDBoxLayout:
+            size_hint_y: .3
+            CoSoCard:
+                #size_hint_y: .3
+                padding:dp(20)
+                MDBoxLayout:
+                    spacing:dp(10)
+                    orientation:'vertical'
+                    MDGridLayout:
+                        padding: "4dp"
+                        spacing: "1dp"
+                        cols: 5
+                        rows: 3
+                        size_hint_y: None
+                        size_hint_x: None
+                        width: 275
+                        height: 165
+                        # row title
+                        K_label:
+                            text: "C\AB"
+                        K_label:
+                            text: "00"
+                        K_label:
+                            text: "01"
+                        K_label:
+                            text: "11"
+                        K_label:
+                            text: "10"
+                        # row 00 ##########################
+                        K_label:
+                            text: "0"
+                        K_button:
+                            id: k_3_0
+                            text : app.k_3_0
+                            on_press: app.switch_3_0()
+                        K_button:
+                            id: k_3_2
+                            text : app.k_3_2
+                            on_press: app.switch_3_2()
+                        K_button:
+                            id: k_3_6
+                            text : app.k_3_6
+                            on_press: app.switch_3_6()
+                        K_button:
+                            id: k_3_4
+                            text : app.k_3_4
+                            on_press: app.switch_3_4()
+                        # row 01 ##########################
+                        K_label:
+                            text: "1"
+                        K_button:
+                            id: k_3_1
+                            text : app.k_3_1
+                            on_press: app.switch_3_1()
+                        K_button:
+                            id: k_3_3
+                            text : app.k_3_3
+                            on_press: app.switch_3_3()
+                        K_button:
+                            id: k_3_7
+                            text : app.k_3_7
+                            on_press: app.switch_3_7()
+                        K_button:
+                            id: k_3_5
+                            text : app.k_3_5
+                            on_press: app.switch_3_5()
+
+
+        CoSoCard:
+            size_hint_y:0.2
+            MDBoxLayout:
+                # spacing:dp(10)
+                # orientation:'vertical'
+                # MDBoxLayout:
+                orientation:'vertical'
+                MDLabel:
+                    text: "Kết quả:"
+                    halign:"center"
+                    font_style:"H6"
+                MDLabel:
+                    #id: to_text_SOP_4
+                    text: app.to_text_SOP_3
+                    halign:"center"
+
+        MDBoxLayout:
+            size_hint_y:0.2
+            orientation: "vertical"
+            spacing: dp(10)
+            MDFillRoundFlatIconButton:
+                md_bg_color: 97/255, 17/255, 150/255, 1
+                icon: "play"
+                text: "Rút Gọn"
+                font_style:"H6"
+                pos_hint: {'center_x': 0.5}
+                #halign:"center"
+                on_press: app.rut_gon_K_3()
+            MDFillRoundFlatIconButton:
+                md_bg_color: 97/255, 17/255, 150/255, 1
+                icon: "replay"
+                text: "Reset"
+                font_style:"H6"
+                pos_hint: {'center_x': 0.5}
+                #halign:"center"
+                on_press: app.reset_3()
+    ######################################################
+<BiaKScreen4bien>:
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(10)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.1
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'biaK1'
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y:.1
+            Image:
+                source: "images/4bien.png"
+                allow_stretch: True
+        MDBoxLayout:
+            size_hint_y:.07
+            MDLabel:
+                text: "Nhấn vào ô để thay đổi giá trị của ô đó"
+                halign: 'center'
+        CoSoCard:
+            #size_hint_y: .4
+            padding:dp(5)
+            MDBoxLayout:
+                spacing:dp(10)
+                orientation:'vertical'
+                MDGridLayout:
+                    padding: "4dp"
+                    spacing: "1dp"
+                    cols: 5
+                    rows: 5
+                    size_hint_y: None
+                    size_hint_x: None
+                    width: 275
+                    height: 275
+                    # row title
+                    K_label:
+                        text: "CD\AB"
+                    K_label:
+                        text: "00"
+                    K_label:
+                        text: "01"
+                    K_label:
+                        text: "11"
+                    K_label:
+                        text: "10"
+                    # row 00 ##########################
+                    K_label:
+                        text: "00"
+                    K_button:
+                        id: k_4_0
+                        text : app.k_4_0
+                        on_press: app.switch_4_0()
+                    K_button:
+                        id: k_4_4
+                        text : app.k_4_4
+                        on_press: app.switch_4_4()
+                    K_button:
+                        id: k_4_12
+                        text : app.k_4_12
+                        on_press: app.switch_4_12()
+                    K_button:
+                        id: k_4_8
+                        text : app.k_4_8
+                        on_press: app.switch_4_8()
+                    # row 01 ##########################
+                    K_label:
+                        text: "01"
+                    K_button:
+                        id: k_4_1
+                        text : app.k_4_1
+                        on_press: app.switch_4_1()
+                    K_button:
+                        id: k_4_5
+                        text : app.k_4_5
+                        on_press: app.switch_4_5()
+                    K_button:
+                        id: k_4_13
+                        text : app.k_4_13
+                        on_press: app.switch_4_13()
+                    K_button:
+                        id: k_4_9
+                        text : app.k_4_9
+                        on_press: app.switch_4_9()
+                    # row 11 ##########################
+                    K_label:
+                        text: "11"
+                    K_button:
+                        id: k_4_3
+                        text : app.k_4_3
+                        on_press: app.switch_4_3()
+                    K_button:
+                        id: k_4_7
+                        text : app.k_4_7
+                        on_press: app.switch_4_7()
+                    K_button:
+                        id: k_4_15
+                        text : app.k_4_15
+                        on_press: app.switch_4_15()
+                    K_button:
+                        id: k_4_11
+                        text : app.k_4_11
+                        on_press: app.switch_4_11()
+                    # row 10 ##########################
+                    K_label:
+                        text: "10"
+                    K_button:
+                        id: k_4_2
+                        text : app.k_4_2
+                        on_press: app.switch_4_2()
+                    K_button:
+                        id: k_4_6
+                        text : app.k_4_6
+                        on_press: app.switch_4_6()
+                    K_button:
+                        id: k_4_14
+                        text : app.k_4_14
+                        on_press: app.switch_4_14()
+                    K_button:
+                        id: k_4_10
+                        text : app.k_4_10
+                        on_press: app.switch_4_10()
+
+        CoSoCard:
+            size_hint_y:0.4
+            MDBoxLayout:
+                # spacing:dp(10)
+                # orientation:'vertical'
+                # MDBoxLayout:
+                orientation:'vertical'
+                MDLabel:
+                    text: "Kết quả:"
+                    halign:"center"
+                    font_style:"H6"
+                MDLabel:
+                    #id: to_text_SOP_4
+                    text: app.to_text_SOP_4
+                    halign:"center"
+
+        MDBoxLayout:
+            size_hint_y:0.4
+            orientation: "vertical"
+            spacing: dp(10)
+            MDFillRoundFlatIconButton:
+                md_bg_color: 97/255, 17/255, 150/255, 1
+                icon: "play"
+                text: "Rút Gọn"
+                font_style:"H6"
+                pos_hint: {'center_x': 0.5}
+                #halign:"center"
+                on_press: app.rut_gon_K_4()
+            MDFillRoundFlatIconButton:
+                md_bg_color: 97/255, 17/255, 150/255, 1
+                icon: "replay"
+                text: "Reset"
+                font_style:"H6"
+                pos_hint: {'center_x': 0.5}
+                #halign:"center"
+                on_press: app.reset_4()
+
+
+
+
+    ######################################################
+<BiaKScreen1>:
+    MDBoxLayout:
+        padding: dp(40)
+        spacing:dp(20)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.2
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'menu'
+        MDBoxLayout:
+            #size_hint_x:0.2
+            # orientation:"vertical"
+            # MDBoxLayout:
+            #     adaptive_size:True
+            #     spacing:dp(25)
+            Image:
+                source: "images/K2.png"
+                allow_stretch: True
+
+
+
+
+        MDFillRoundFlatIconButton:
+            md_bg_color: 97/255, 17/255, 150/255, 1
+            icon: "numeric-2-circle"
+            text: "Bìa K 2 biến"
+            font_style:"H6"
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.transition.direction = "left"
+                root.manager.current = 'biaK2bien'
+        MDFillRoundFlatIconButton:
+            md_bg_color: 97/255, 17/255, 150/255, 1
+            icon: "numeric-3-circle"
+            text: "Bìa K 3 biến"
+            font_style:"H6"
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.transition.direction = "left"
+                root.manager.current = 'biaK3bien'
+
+        MDFillRoundFlatIconButton:
+            md_bg_color: 97/255, 17/255, 150/255, 1
+            icon: "numeric-4-circle"
+            text: "Bìa K 4 biến"
+            font_style:"H6"
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.transition.direction = "left"
+                root.manager.current = 'biaK4bien'
+
+###################################################33
+<DichAsciiScreen>:
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(20)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.2
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'menu'
+        MDBoxLayout:
+            #size_hint_x:0.2
+            orientation:"vertical"
+            MDBoxLayout:
+                adaptive_size:True
+                spacing:dp(25)
+            Image:
+                source: "images/ascii.png"
+                allow_stretch: True
+
+        CoSoCard:
+            MDBoxLayout:
+                spacing:dp(10)
+                orientation:'vertical'
+                MDLabel:
+                    text: "Nhập 1 kí tự hoặc chuỗi kí tự"
+                    halign:"center"
+                MDBoxLayout:
+                    MDTextField:
+                        id: from_text_id_ascii
+                        hint_text: "Nhập mã ASCII"
+
+
+        CoSoCard:
+            MDBoxLayout:
+                orientation:'vertical'
+                MDDropDownItem:
+                    pos_hint: {'center_x': 0.5}
+                    id: drop_item_ascii
+                    text: 'Chọn cơ số'
+                    on_release: app.menu_ascii.open()
+                MDBoxLayout:
+                    MDLabel:
+                        text: "Kết quả: "
+                MDBoxLayout:
+                    MDLabel:
+                        #text: "hello"
+                        text: app.to_text_ascii
+                        halign:"center"
+        MDFillRoundFlatIconButton:
+            md_bg_color: 97/255, 17/255, 150/255, 1
+            icon: "play"
+            text: "Giải mã"
+            font_style:"H6"
+            pos_hint: {'center_x': 0.5}
+            on_press: app.ascii_decode_GUI()
+###############################################################################
+<ChuyenMaScreen>:
+
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(20)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.2
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'menu'
+        MDBoxLayout:
+            #size_hint_x:0.2
+            orientation:"vertical"
+            MDBoxLayout:
+                adaptive_size:True
+                spacing:dp(25)
+            Image:
+                source: "images/promo.png"
+                allow_stretch: True
+
+        CoSoCard:
+            MDBoxLayout:
+                spacing:dp(10)
+                orientation:'vertical'
+                MDDropDownItem:
+                    pos_hint: {'center_x': 0.5}
+                    id: drop_item_ma_1
+                    text: 'Chọn mã'
+                    on_release: app.menu_ma_1.open()
+                MDBoxLayout:
+                    MDTextField:
+                        id: from_text_id_ma
+                        #mode: "rectangle"
+                        #text : app.from_text
+                        hint_text: "Nhập số muốn chuyển"
+                        #helper_text_mode: "on_focus"
+
+        CoSoCard:
+            MDBoxLayout:
+                orientation:'vertical'
+                MDDropDownItem:
+                    pos_hint: {'center_x': 0.5}
+                    id: drop_item_ma_2
+                    text: 'Chọn mã'
+                    on_release: app.menu_ma_2.open()
+                MDBoxLayout:
+                    MDLabel:
+                        text: "Unfinished code. Wait for updates !!!"
+                MDBoxLayout:
+                    MDLabel:
+                        text: app.to_text
+                        halign:"center"
+        MDFillRoundFlatIconButton:
+            md_bg_color: 97/255, 17/255, 150/255, 1
+            icon: "play"
+            text: "Chuyển"
+            font_style:"H6"
+            pos_hint: {'center_x': 0.5}
+            on_press: app.convert_GUI_ma()
+
+
+
+###############################################################################
+<ChuyenCoSoScreen>:
+
+    MDBoxLayout:
+        padding: dp(20)
+        spacing:dp(20)
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.2
+            orientation:'vertical'
+            BackButton:
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = 'menu'
+        MDBoxLayout:
+            #size_hint_x:0.2
+            orientation:"vertical"
+            MDBoxLayout:
+                adaptive_size:True
+                spacing:dp(25)
+            Image:
+                source: "images/binary.png"
+                allow_stretch: True
+
+        CoSoCard:
+            MDBoxLayout:
+                spacing:dp(10)
+                orientation:'vertical'
+                MDDropDownItem:
+                    pos_hint: {'center_x': 0.5}
+                    id: drop_item_1
+                    text: 'Chọn cơ số'
+                    on_release: app.menu_1.open()
+                MDBoxLayout:
+                    MDTextField:
+                        id: from_text_id
+                        #mode: "rectangle"
+                        #text : app.from_text
+                        hint_text: "Nhập số muốn chuyển"
+                        #helper_text_mode: "on_focus"
+
+        CoSoCard:
+            MDBoxLayout:
+                orientation:'vertical'
+                MDDropDownItem:
+                    pos_hint: {'center_x': 0.5}
+                    id: drop_item_2
+                    text: 'Chọn cơ số'
+                    on_release: app.menu_2.open()
+                MDBoxLayout:
+                    MDLabel:
+                        text: "Kết quả: "
+                MDBoxLayout:
+                    MDLabel:
+                        text: app.to_text
+                        halign:"center"
+        MDFillRoundFlatIconButton:
+            md_bg_color: 97/255, 17/255, 150/255, 1
+            icon: "play"
+            text: "Chuyển"
+            font_style:"H6"
+            pos_hint: {'center_x': 0.5}
+            on_press: app.convert_GUI()
+
+####################################################
+<MenuScreen>:
+
+    #md_bg_color:255/255, 255/255, 255/255, 1    # white
+    #md_bg_color:107/255, 241/255, 190/255, 1   # green
+    MDBoxLayout:
+        md_bg_color:107/255, 241/255, 190/255, 1
+        orientation:'vertical'
+        MDBoxLayout:
+            size_hint_y:.2
+            padding:dp(5)
+            MDBoxLayout:
+                orientation:"vertical"
+                MDBoxLayout:
+                    adaptive_size:True
+                    spacing:dp(25)
+                Image:
+                    source: "images/title.png"
+                    allow_stretch: True
+                    padding:[dp(15),dp(15),dp(15),dp(15)]
+
+        MDGridLayout:
+            size_hint_y:.75
+            cols:2
+            padding:[dp(15),dp(15),dp(15),dp(35)]
+            spacing:dp(15)
+
+            ElementCard:
+                image:"images/K2.png"
+                text:"Bìa K"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = 'biaK1'
+
+            ElementCard:
+                image:"images/exchange.png"
+                text:"Chuyển đổi SOP, POS"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = 'SOP'
+
+            ElementCard:
+                image:"images/binary.png"
+                text:"Chuyển cơ số"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = 'chuyen'
+
+            ElementCard:
+                image:"images/ascii.png"
+                text:"Giải mã mã Ascii"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = 'ascii'
+
+            ElementCard:
+                image:"images/promo.png"
+                text:"Chuyển đổi mã"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = 'ma'
+
+            ElementCard:
+                image:"images/i.png"
+                text:"About"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = 'about'
+
+####################### functionalities ############################33
+<ElementCard@MDCard>:
+    #md_bg_color:255/255, 255/255, 255/255, 1   # white
+    md_bg_color: 241/255, 241/255, 233/255, 1   #purple
+    #md_bg_color:107/255, 241/255, 190/255, 1    #green
+    padding:dp(15)
+    spacing:dp(5)
+    radius:dp(25)
+    ripple_behavior: True
+    image:''
+    text:""
+
+    orientation:'vertical'
+    Image:
+        source:root.image
+    MDBoxLayout:
+        orientation:'vertical'
+        MDLabel:
+            halign:"center"
+            text:root.text
+            font_style:"H6"
+
+<IconListItem>
+    IconLeftWidget:
+        icon: root.icon
+
+<CoSoCard@MDCard>:
+    md_bg_color: 241/255, 241/255, 233/255, 1
+    radius:20
+    padding: dp(20)
+
+<BackButton@MDIconButton>:
+    icon: "arrow-left"
+    pos_hint: {"center_y": 0.95}
+    user_font_size: "30sp"
+    theme_text_color: "Custom"
+    text_color: rgba(26, 24, 58, 255)
+<K_button@Button>:
+
+<K_label@MDLabel>:
+    halign: 'center'
