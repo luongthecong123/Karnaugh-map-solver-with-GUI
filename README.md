@@ -10,5 +10,5 @@ Help me improve this App !
 
 Email: luongthecong123@gmail.com 
 
-![alt text](https://github.com/luongthecong123/KTSHelper/blob/demo_images/main_menu.jpg?raw=true)
-![alt text](https://github.com/luongthecong123/KTSHelper/blob/demo_images/bia_K.jpg?raw=true)
+![alt text]([https://github.com/luongthecong123/KTSHelper/blob/demo_images](https://github.com/luongthecong123/KTSHelper/tree/main/demo_images)/main_menu.jpg?raw=true)
+![alt text]([https://github.com/luongthecong123/KTSHelper/blob/demo_images](https://github.com/luongthecong123/KTSHelper/tree/main/demo_images)/bia_K.jpg?raw=true)
